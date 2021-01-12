@@ -1,13 +1,9 @@
-// ./assets/js/components/Posts.js
-
 import React, {Component} from 'react';
 import axios from 'axios';
-
 
 class Posts extends Component {
     constructor() {
         super();
-
         this.state = { posts: [], loading: true}
     }
 
@@ -16,9 +12,10 @@ class Posts extends Component {
     }
 
     getPosts() {
-        axios.get(`/posts/`).then(res => {
-            const posts = res.data.slice(0,15);
-            this.setState({ posts, loading: false })
+        axios
+            .get(`/api/posts/`)
+            .then(
+                posts => {this.setState({ posts: posts.data, loading: false })
         })
     }
 
@@ -29,15 +26,16 @@ class Posts extends Component {
                 <section className="row-section">
                     <div className="container">
                         <div className="row">
-                            <h2 className="text-center"><span>List of posts</span>Created with <i
-                                className="fa fa-heart"></i> by yemiwebby </h2>
+                            <h2 className="text-center">
+                                <span>List of posts</span>Created with
+                                <i className="fa fa-heart"></i> by yemiwebby
+                            </h2>
                         </div>
 
                         {loading ? (
                             <div className={'row text-center'}>
                                 <span className="fa fa-spin fa-spinner fa-4x"></span>
                             </div>
-
                         ) : (
                             <div className={'row'}>
                                 {this.state.posts.map(post =>

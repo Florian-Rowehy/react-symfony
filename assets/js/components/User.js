@@ -1,5 +1,3 @@
-// ./assets/js/components/Users.js
-
 import React, {Component} from 'react';
 import axios from 'axios';
 
@@ -14,8 +12,10 @@ class Users extends Component {
     }
 
     getUsers() {
-        axios.get(`/api/users`).then(users => {
-            this.setState({ users: users.data, loading: false})
+        axios
+            .get(`/api/users`)
+            .then(
+                users => {this.setState({ users: users.data, loading: false})
         })
     }
 
@@ -26,12 +26,14 @@ class Users extends Component {
                 <section className="row-section">
                     <div className="container">
                         <div className="row">
-                            <h2 className="text-center"><span>List of users </span> Created with <i
-                                className="fa fa-heart"></i> by yemiwebby</h2>
+                            <h2 className="text-center">
+                                <span>List of users </span> Created with
+                                <i className="fa fa-heart"></i> by yemiwebby
+                            </h2>
                         </div>
                         {loading ? (
                             <div className={'row text-center'}>
-                                <span className="fa fa-spin fa-spinner fa-4x"></span>
+                                <i className="fa fa-spin fa-spinner fa-4x"></i>
                             </div>
                         ) : (
                             <div className={'row'}>

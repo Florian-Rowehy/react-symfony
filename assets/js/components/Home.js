@@ -1,5 +1,3 @@
-// ./assets/js/components/Home.js
-
 import React, {Component} from 'react';
 import {Route, Switch,Redirect, Link, withRouter} from 'react-router-dom';
 import Users from './User';
@@ -25,9 +23,9 @@ class Home extends Component {
                     </div>
                 </nav>
                 <Switch>
-                    <Redirect exact from="/" to="/users" />
-                    <Route path="/users" component={Users} />
+                    <Redirect exact from="/" to="/posts" />
                     <Route path="/posts" component={Posts} />
+                    <Route path="/users" component={Users} />
                 </Switch>
             </div>
         )
